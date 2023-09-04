@@ -27,7 +27,7 @@ export const routingpaths = [
                 element: <SubHome />
             },
             {
-                path: 'Work',
+                path: 'work',
                 element: <Work />
             }
         ]

@@ -228,7 +228,7 @@ export default function DashboardLayout() {
                             <Button
                                 variant='outlined'
                                 sx={{ border: '2px solid white', color: 'white', borderRadius: '50px' }}
-                                onClick={() => navigate('/')}
+                                onClick={() => navigate('/work')}
                             >
                                 {window?.innerWidth <= 550 ? <Logout /> : 'logout'}
                             </Button>

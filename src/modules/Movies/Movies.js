@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { GetMoviesData } from '../../reducers/Slices/Movies';
 import ApexChart from './Graphs';
-import { Paper } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import { useState } from 'react';
 import MoviesCard from './MovieCard';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
     return (
@@ -35,6 +36,7 @@ export default function Movies() {
         rating: [],
         movies: []
     })
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(GetMoviesData())
@@ -66,6 +68,13 @@ export default function Movies() {
                 <Typography className='kanit' px={2} fontSize={25} >This Movie DataBase is Connected to MongoDB.</Typography>
             </Grid>
             <Grid container component="main" sx={{ backgroundColor: 'whitesmoke' }} p={3}>
+                <Grid item xs={12} sx={{
+                    display: 'flex',
+                    justifyContent: 'end',
+                    alignItems: 'center'
+                }}>
+                    <Button variant='outlined' sx={{ alignSelf: 'end' }} onClick={() => navigate(-1)} >Back</Button>
+                </Grid>
                 <Grid item xs={12} lg={5} height={`${window.innerHeight - 100}px`} sx={{ overflow: 'scroll' }}>
                     {
                         MoviesData?.map((item, idx) => {

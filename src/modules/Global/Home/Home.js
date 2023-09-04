@@ -62,7 +62,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 // const icons = [<HomeIcon />, <AccountCircleIcon />, <SettingsIcon />, <PaymentIcon />, <Notifications />]
-const links = ['Home', 'Work']
+const links = ['home', 'work']
 
 export default function Home() {
     const open = false;
@@ -187,8 +187,8 @@ export default function Home() {
                                                         }
                                                     }}
                                                     // hrefLang={`#${item}`}
-                                                    to={item === 'Home' ? "" : `/${item}`}
-                                                >{item}</NavLink>&emsp;&ensp;
+                                                    to={item === 'home' ? "" : `/${item}`}
+                                                >{capitalizeFirstLetter(item)}</NavLink>&emsp;&ensp;
                                             </>
                                         )
                                     })
