@@ -1,0 +1,49 @@
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 50px !important;
+  border: 0px !important;
+}
+
+.css-1n6ozx9-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding: 0px !important;
+}
+
+.css-1x6wl5v-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding: 0px !important;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #407587 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #407587;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.kanit {
+  font-family: 'Kanit', sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Sofia Sans Condensed', sans-serif !important;
+  font-weight: bold !important;
+}
+
+.cursive {
+  font-family: 'Pacifico', cursive;
+  font-family: 'Sofia Sans Condensed', sans-serif;
+}
