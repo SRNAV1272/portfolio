@@ -88,6 +88,8 @@ export default function Home() {
         setState({ ...state, [anchor]: open });
     };
 
+    console.log('Show =>', process.env.NODE_ENV)
+
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, paddingX: '20px', paddingY: '60px' }}
