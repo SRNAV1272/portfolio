@@ -62,7 +62,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 // const icons = [<HomeIcon />, <AccountCircleIcon />, <SettingsIcon />, <PaymentIcon />, <Notifications />]
-const links = ['home', 'work']
+const links = ['home', 'work', 'experience']
 
 export default function Home() {
     const open = false;
@@ -106,7 +106,7 @@ export default function Home() {
                                 textDecorationLine: 'none'
                             }
                         }}
-                        to={text === 'Home' ? '/' : `/${text}`}
+                        to={text === 'home' ? '/' : `/${text}`}
                     >
                         <ListItem key={text} disablePadding>
                             <ListItemButton>
@@ -127,130 +127,112 @@ export default function Home() {
     }
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar position="fixed" open={open} sx={{ backgroundColor: 'white' }}>
-                <Toolbar>
-                    {
-                        window.innerWidth < 768 &&
-                        <Button onClick={toggleDrawer('bottom', true)}>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                // edge="start"
-                                sx={{
-                                    ...(open && { display: 'none' }),
-                                }}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                        </Button>
-                    }
-                    <Grid
-                        container
-                        display={'flex'}
-                        justifyContent={'space-between'}
-                    >
-                        <Grid
-                            xs={4}
-                            // border={'1px solid grey'}
-                            display={'flex'}
-                            alignItems={'center'}
-                        >
-                            <Typography
-                                className='kanit'
-                                fontWeight={'bold'}
-                                color={'slateblue'}
-                            >
-                                K Sai Rajesh
-                            </Typography>
-                        </Grid>
-                        {
-                            window.innerWidth >= 768 &&
-                            <Grid
-                                lg={6}
-                                display={'flex'}
-                                justifyContent={'end'}
-                                alignItems={'center'}
-                            >
-                                {
-                                    links.map((item, idx) => {
-                                        return (
-                                            <>
-                                                <NavLink
-                                                    key={idx}
-                                                    className={'kanit'}
-                                                    style={({ isActive }) => {
-                                                        return {
-                                                            color: isActive ? 'burlywood' : 'grey',
-                                                            textDecorationLine: 'none',
-                                                            fontSize: '16px',
-                                                            fontWeight: 'bold'
-                                                        }
-                                                    }}
-                                                    // hrefLang={`#${item}`}
-                                                    to={item === 'home' ? "" : `/${item}`}
-                                                >{capitalizeFirstLetter(item)}</NavLink>&emsp;&ensp;
-                                            </>
-                                        )
-                                    })
-                                }
-                            </Grid>
-                        }
+        <>
+            <Box sx={{ display: 'flex' }}>
+                <CssBaseline />
+                <AppBar position="fixed" open={open} sx={{ backgroundColor: 'white' }}>
+                    <Toolbar>
                         {
                             window.innerWidth < 768 &&
-                            <Grid
-                                xs={2}
-                                sm={2}
-                                lg={1}
-                                display={'flex'}
-                                justifyContent={'center'}
-                                alignItems={"center"}
-                            >
-                                <Button
-                                    variant='outlined'
-                                    sx={{ fontWeight: 'bold', borderRadius: '50px' }}
-                                    className='kanit'
-                                    onClick={() => navigate('/')}
+                            <Button onClick={toggleDrawer('bottom', true)}>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    // edge="start"
+                                    sx={{
+                                        ...(open && { display: 'none' }),
+                                    }}
                                 >
-                                    Contact
-                                </Button>
-                            </Grid>
+                                    <MenuIcon />
+                                </IconButton>
+                            </Button>
                         }
-                    </Grid>
-                </Toolbar>
-            </AppBar>
+                        <Grid
+                            container
+                            display={'flex'}
+                            justifyContent={'space-between'}
+                        >
+                            <Grid
+                                xs={4}
+                                // border={'1px solid grey'}
+                                display={'flex'}
+                                alignItems={'center'}
+                            >
+                                <Typography
+                                    className='kanit'
+                                    fontWeight={'bold'}
+                                    color={'slateblue'}
+                                >
+                                    K Sai Rajesh
+                                </Typography>
+                            </Grid>
+                            {
+                                window.innerWidth >= 768 &&
+                                <Grid
+                                    lg={6}
+                                    display={'flex'}
+                                    justifyContent={'end'}
+                                    alignItems={'center'}
+                                >
+                                    {
+                                        links.map((item, idx) => {
+                                            return (
+                                                <>
+                                                    <NavLink
+                                                        key={idx}
+                                                        className={'kanit'}
+                                                        style={({ isActive }) => {
+                                                            return {
+                                                                color: isActive ? 'burlywood' : 'grey',
+                                                                textDecorationLine: 'none',
+                                                                fontSize: '16px',
+                                                                fontWeight: 'bold'
+                                                            }
+                                                        }}
+                                                        // hrefLang={`#${item}`}
+                                                        to={item === 'home' ? "" : `/${item}`}
+                                                    >{capitalizeFirstLetter(item)}</NavLink>&emsp;&ensp;
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </Grid>
+                            }
+                        </Grid>
+                    </Toolbar>
+                </AppBar>
 
-            <div>
-                <React.Fragment>
-                    <SwipeableDrawer
-                        anchor={'bottom'}
-                        open={state['bottom']}
-                        onClose={toggleDrawer('bottom', false)}
-                        onOpen={toggleDrawer('bottom', true)}
-                    >
-                        {list('bottom')}
-                    </SwipeableDrawer>
-                </React.Fragment>
-            </div>
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
+                <div>
+                    <React.Fragment>
+                        <SwipeableDrawer
+                            anchor={'bottom'}
+                            open={state['bottom']}
+                            onClose={toggleDrawer('bottom', false)}
+                            onOpen={toggleDrawer('bottom', true)}
+                        >
+                            {list('bottom')}
+                        </SwipeableDrawer>
+                    </React.Fragment>
+                </div>
+                <Drawer
+                    sx={{
                         width: drawerWidth,
-                        boxSizing: 'border-box',
-                    },
-                }}
-                variant="persistent"
-                anchor="left"
-                open={open}
-            >
-            </Drawer>
-            <Main open={open} sx={{ height: `${window.innerHeight - 10}px`, overflow: 'auto', backgroundColor: 'whitesmoke' }}>
-                <DrawerHeader />
-                <Outlet />
-            </Main>
-        </Box>
+                        flexShrink: 0,
+                        '& .MuiDrawer-paper': {
+                            width: drawerWidth,
+                            boxSizing: 'border-box',
+                        },
+                    }}
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                >
+                </Drawer>
+                <Main open={open} sx={{ height: `${window.innerHeight - 10}px`, overflow: 'auto', backgroundColor: 'whitesmoke' }}>
+                    <DrawerHeader />
+                    <Outlet />
+                </Main>
+            </Box>
+        </>
     );
 }

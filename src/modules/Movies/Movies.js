@@ -73,7 +73,7 @@ export default function Movies() {
                     justifyContent: 'end',
                     alignItems: 'center'
                 }}>
-                    <Button variant='outlined' sx={{ alignSelf: 'end' }} onClick={() => navigate(-1)} >Back</Button>
+                    <Button variant='outlined' sx={{ alignSelf: 'end', borderRadius: '50px' }} onClick={() => navigate(-1)} >Back</Button>
                 </Grid>
                 <Grid item xs={12} lg={5} height={`${window.innerHeight - 100}px`} sx={{ overflow: 'scroll' }}>
                     {

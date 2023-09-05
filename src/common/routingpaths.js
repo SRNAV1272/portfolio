@@ -12,6 +12,7 @@ import SubHome from "../modules/Global/Home/SubHome";
 import Work from "../modules/Global/Home/Work";
 import DashboardHome from "../modules/Dashboard/Home/Home";
 import Movies from "../modules/Movies/Movies";
+import Experience from "../modules/Global/Experience";
 
 export const routingpaths = [
     {
@@ -29,6 +30,10 @@ export const routingpaths = [
             {
                 path: 'work',
                 element: <Work />
+            },
+            {
+                path: 'experience',
+                element: <Experience />
             }
         ]
     },

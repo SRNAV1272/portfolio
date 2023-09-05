@@ -8,6 +8,7 @@ import db from '../../../images/db.svg'
 import docker from '../../../images/docker.png'
 import mui from '../../../images/mui.png'
 import Footer from "../../Global/Footer";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function SubHome() {
     const skills = [
@@ -94,17 +95,29 @@ export default function SubHome() {
                         >
                             Am Indian based Software Developer passionate and experienced in building Web applications.
                         </Typography>
-                        <Box py={3} width={'50%'}>
-                            <Button
-                                fullWidth
-                                variant='outlined'
+                        <Box
+                            py={3}
+                            width={'50%'}
+                            display={'flex'}
+                            justifyContent={'center'}
+                            alignItems={'center'}
+                        >
+                            <Typography
+                                variant='p'
+                                fontSize={'12px'}
+                                color={'Gray'}
                                 className='kanit'
-                                sx={{
-                                    borderRadius: '50px',
-                                    fontWeight: 'bold'
-                                }}
-                            >
-                                Connect
+                                fontWeight={'bold'}
+                            >7024899020</Typography>&emsp;
+                            <Typography
+                                variant='p'
+                                fontSize={'12px'}
+                                color={'Gray'}
+                                className='kanit'
+                                fontWeight={'bold'}
+                            >sairajeshk17@gmail.com</Typography>&emsp;
+                            <Button href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFXCgcH2_4oBgAAAYplTgbYidRj5khf6ARflPVZ_XFQHqo3E2dKSG6EdulXhjSPn_WwiDFMrzoCWSchX4d15q0EWkLX1k8WDk7w01mVGKStYsnm4mU3YQ3kDiMkHyyZnl5RCVA=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsai-rajesh-k-539424255" >
+                                <LinkedInIcon />
                             </Button>
                         </Box>
                     </Box>
@@ -155,19 +168,6 @@ export default function SubHome() {
                     <Typography className='kanit' variant='p' sx={{ fontSize: '13px', fontWeight: 'bold' }}>
                         I'm currently working in Navajna Technology Pvt. ltd.
                     </Typography><br />
-                    <Box width={'50%'}>
-                        <Button
-                            variant='outlined'
-                            fullWidth
-                            className='kanit'
-                            sx={{
-                                borderRadius: "50px",
-                                fontWeight: 'bold'
-                            }}
-                        >
-                            Connect
-                        </Button>
-                    </Box>
                 </Grid>
             </Grid>
             <Divider />
