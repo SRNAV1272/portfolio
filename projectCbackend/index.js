@@ -26,14 +26,15 @@ app.use(express.static(path.join(`${process.cwd()}`, "build")))
 
 const global_routes = [
     '/',
-    '/Work',
+    '/work',
     '/dashboard/home',
     '/dashboard/account',
     '/dashboard/settings',
     '/dashboard/payment',
     '/dashboard/notifications',
     '/signup',
-    '/signin'
+    '/signin',
+    '/experience'
 ]
 
 app.get(global_routes, (req, res) => {
