@@ -95,9 +95,10 @@ export default function SubHome() {
                         >
                             Am Indian based Software Developer passionate and experienced in building Web applications.
                         </Typography>
-                        <Box
+                        <Grid
+                            xs={12}
                             py={3}
-                            width={'50%'}
+                            width={'100%'}
                             display={'flex'}
                             justifyContent={'center'}
                             alignItems={'center'}
@@ -119,7 +120,7 @@ export default function SubHome() {
                             <Button href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFXCgcH2_4oBgAAAYplTgbYidRj5khf6ARflPVZ_XFQHqo3E2dKSG6EdulXhjSPn_WwiDFMrzoCWSchX4d15q0EWkLX1k8WDk7w01mVGKStYsnm4mU3YQ3kDiMkHyyZnl5RCVA=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsai-rajesh-k-539424255" >
                                 <LinkedInIcon />
                             </Button>
-                        </Box>
+                        </Grid>
                     </Box>
                 </Grid>
                 <Grid
