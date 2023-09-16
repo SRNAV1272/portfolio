@@ -6,13 +6,12 @@ import Payment from "../modules/Dashboard/Payment/Payment";
 import Notification from "../modules/Dashboard/Notification/Notification";
 import SignUp from "../modules/Global/SignUp";
 import SignIn from "../modules/Global/SignIn";
-import Footer from "../modules/Global/Footer";
 import Home from "../modules/Global/Home/Home";
 import SubHome from "../modules/Global/Home/SubHome";
 import Work from "../modules/Global/Home/Work";
 import DashboardHome from "../modules/Dashboard/Home/Home";
-import Movies from "../modules/Movies/Movies";
 import Experience from "../modules/Global/Experience";
+import Classes from "../modules/Global/Classes";
 
 export const routingpaths = [
     {
@@ -20,7 +19,6 @@ export const routingpaths = [
         element:
             <Home>
                 <Outlet />
-                <Footer />
             </Home>,
         children: [
             {
@@ -34,15 +32,12 @@ export const routingpaths = [
             {
                 path: 'experience',
                 element: <Experience />
+            },
+            {
+                path: 'classes',
+                element: <Classes />
             }
         ]
-    },
-    {
-        path: 'showcase',
-        element:
-            <Movies>
-                <Outlet />
-            </Movies>
     },
     {
         path: 'dashboard',

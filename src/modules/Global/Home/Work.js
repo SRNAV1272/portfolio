@@ -3,8 +3,8 @@ import portfolio from '../../../images/portfolio.png'
 import dashboard from '../../../images/dashboard.png'
 import signin from '../../../images/signin.png'
 import signup from '../../../images/signup.png'
-import Showcase from '../../../images/Showcase.png'
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
 
 export default function Work() {
     const links = [
@@ -30,12 +30,6 @@ export default function Work() {
             image: signin,
             work: 'Sign In Page',
             navigate: '/signin',
-            code: ''
-        },
-        {
-            image: Showcase,
-            work: 'Movies Page',
-            navigate: '/showcase',
             code: ''
         }
     ]
@@ -98,7 +92,8 @@ export default function Work() {
                         </Grid>
                     )
                 })
-            }
+            }<br />
+            <Footer />
         </Grid>
     )
 }

@@ -13,7 +13,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Button, Grid, SwipeableDrawer, Typography } from '@mui/material';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -62,11 +62,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 // const icons = [<HomeIcon />, <AccountCircleIcon />, <SettingsIcon />, <PaymentIcon />, <Notifications />]
-const links = ['home', 'work', 'experience']
+const links = ['home', 'work', 'experience', 'classes']
 
 export default function Home() {
     const open = false;
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     // smaller screens
     const [state, setState] = React.useState({

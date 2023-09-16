@@ -9,8 +9,11 @@ import docker from '../../../images/docker.png'
 import mui from '../../../images/mui.png'
 import Footer from "../../Global/Footer";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useNavigate } from "react-router-dom";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function SubHome() {
+    const navigate = useNavigate()
     const skills = [
         {
             icon: git,
@@ -119,6 +122,40 @@ export default function SubHome() {
                             >sairajeshk17@gmail.com</Typography>&emsp;
                             <Button href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFXCgcH2_4oBgAAAYplTgbYidRj5khf6ARflPVZ_XFQHqo3E2dKSG6EdulXhjSPn_WwiDFMrzoCWSchX4d15q0EWkLX1k8WDk7w01mVGKStYsnm4mU3YQ3kDiMkHyyZnl5RCVA=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsai-rajesh-k-539424255" >
                                 <LinkedInIcon />
+                            </Button>
+                        </Grid>
+                        <Grid
+                            xs={12}
+                            py={3}
+                            width={'100%'}
+                            display={'flex'}
+                            direction='column'
+                            justifyContent={'center'}
+                            alignItems={'center'}
+                        >
+                            <Button
+                                variant='outlined'
+                                endIcon={<WhatsAppIcon />}
+                                className='kanit'
+                                href='https://wa.me/7024899020'
+                                sx={{ borderRadius: '50px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}
+                            >
+                                Connect
+                            </Button><br />
+                            <Button
+                                variant='outlined'
+                                onClick={() => navigate('/classes')}
+                                sx={{ borderRadius: '50px', fontWeight: 'bold', width: '50%', display: 'flex', justifyContent: 'space-between' }}
+                            >
+                                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Avatar src={js} sizes="large" sx={{ color: 'grey' }} />&ensp;
+                                    <Avatar src={nodejs} sizes="large" sx={{ color: 'grey' }} />&ensp;
+                                    <Avatar src={git} sizes="large" sx={{ color: 'grey' }} />
+                                </Box>
+                                <Box>
+                                    <span className="kanit">MERN Stack</span><br />
+                                    <span className="kanit">at ₹ 3999 /-</span>
+                                </Box>
                             </Button>
                         </Grid>
                     </Box>
@@ -233,8 +270,8 @@ export default function SubHome() {
                         )
                     })
                 }
-                <Footer />
-            </Grid>
+            </Grid><br />
+            <Footer />
         </>
     )
 }

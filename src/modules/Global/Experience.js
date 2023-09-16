@@ -1,4 +1,5 @@
 import { Box, Grid, Paper, Typography } from "@mui/material";
+import Footer from "./Footer";
 
 export default function Experience() {
 
@@ -68,7 +69,7 @@ export default function Experience() {
                                             alignItems: 'center'
                                         }}
                                     >
-                                        <Typography className="kanit" fontSize='18px' fontWeight='bold' color={'slateblue'}>{idx+1}. {item?.project} :</Typography>
+                                        <Typography className="kanit" fontSize='18px' fontWeight='bold' color={'slateblue'}>{idx + 1}. {item?.project} :</Typography>
                                         <Typography className="kanit" fontSize='18px' fontWeight='bold' color={'GrayText'}>{item?.tech}</Typography>
                                     </div>
                                     <Typography className="kanit" fontSize='14px' fontWeight='bold'>
@@ -90,7 +91,8 @@ export default function Experience() {
                         })
                     }
                 </Grid>
-            </Grid>
+            </Grid><br />
+            <Footer />
         </>
     )
 }

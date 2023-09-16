@@ -1,21 +1,21 @@
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
-import { MongoClient, ServerApiVersion } from 'mongodb';
+// import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const uri = "mongodb+srv://sairajeshk17:RFYctzjSYH1TAQJB@cluster0.sbv9mxh.mongodb.net/?retryWrites=true&w=majority";
+// const uri = "mongodb+srv://sairajeshk17:RFYctzjSYH1TAQJB@cluster0.sbv9mxh.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
+// const client = new MongoClient(uri, {
+//     serverApi: {
+//         version: ServerApiVersion.v1,
+//         strict: true,
+//         deprecationErrors: true,
+//     }
+// });
 
-const database = 'sample_mflix'//'sample_restaurants' //'sample_training'
-let collection
+// const database = 'sample_mflix'//'sample_restaurants' //'sample_training'
+// let collection
 
 const app = express()
 
@@ -43,24 +43,7 @@ app.get(global_routes, (req, res) => {
 
 app.listen(port, async () => {
     try {
-        // Connect the client to the server	(optional starting in v4.7)
-        // await client.connect();
-        // Send a ping to confirm a successful connection
-        // await client.db("admin").command({ ping: 1 });
-        // const db = client.db(database)/
-
-        // console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        console.log(`Server is Listening at Port ${port} !`)
     } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
     }
-})
-
-app.get('/movies', async (req, res) => {
-    await client.connect()
-    const db = client.db(database)
-    collection = db.collection('movies')
-    const data = await collection.find({}).limit(20).toArray()
-
-    res.send(data)
 })
