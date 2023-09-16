@@ -34,7 +34,8 @@ const global_routes = [
     '/dashboard/notifications',
     '/signup',
     '/signin',
-    '/experience'
+    '/experience',
+    '/classes'
 ]
 
 app.get(global_routes, (req, res) => {
