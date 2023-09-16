@@ -142,21 +142,26 @@ export default function SubHome() {
                             >
                                 Connect
                             </Button><br />
-                            <Button
-                                variant='outlined'
-                                onClick={() => navigate('/classes')}
-                                sx={{ borderRadius: '50px', fontWeight: 'bold', width: '50%', display: 'flex', justifyContent: 'space-between' }}
-                            >
-                                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Box sx={{ display: 'flex', direction: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                <Button
+                                    variant="outlined"
+                                    onClick={() => navigate('/classes')}
+                                    sx={{ borderRadius: '50px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}
+                                >
                                     <Avatar src={js} sizes="large" sx={{ color: 'grey' }} />&ensp;
                                     <Avatar src={nodejs} sizes="large" sx={{ color: 'grey' }} />&ensp;
                                     <Avatar src={git} sizes="large" sx={{ color: 'grey' }} />
-                                </Box>
-                                <Box>
-                                    <span className="kanit">MERN Stack</span><br />
-                                    <span className="kanit">at ₹ 3999 /-</span>
-                                </Box>
-                            </Button>
+                                </Button>
+                            </Box>
+                            <Box
+                                sx={{
+                                    py: 3
+                                }}
+                            >
+                                <span className="kanit">MERN Stack</span> &emsp;
+                                <span className="kanit" style={{ fontSize: '20px', color: '#880808' }}>at ₹ 3999 /-</span>
+                            </Box>
+
                         </Grid>
                     </Box>
                 </Grid>
