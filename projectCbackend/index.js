@@ -44,12 +44,12 @@ app.get(global_routes, (req, res) => {
 app.listen(port, async () => {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
         // Send a ping to confirm a successful connection
         // await client.db("admin").command({ ping: 1 });
         // const db = client.db(database)/
 
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        // console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
@@ -57,7 +57,6 @@ app.listen(port, async () => {
 })
 
 app.get('/movies', async (req, res) => {
-    console.log('Server is Called !')
     await client.connect()
     const db = client.db(database)
     collection = db.collection('movies')
