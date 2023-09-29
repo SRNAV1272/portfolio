@@ -220,7 +220,7 @@ export default function DashboardLayout() {
                             justifyContent={'center'}
                             alignItems={"center"}
                         >
-                            <Badge badgeContent={0} color="primary" sx={{ cursor: 'pointer' }} onClick={() => navigate('/dashboard/notifications')}>
+                            <Badge badgeContent={0} color="primary" sx={{ cursor: 'pointer' }}>
                                 <Notifications className='bell' />
                             </Badge>
                         </Grid>
