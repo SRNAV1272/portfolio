@@ -17,7 +17,7 @@ export default function DashboardHome() {
         type: 'image/png',
         quality: 1.0
     })
-    function download() {
+    function download(image) {
         const pdf = new jsPDF('p', 'mm', 'a4')
         pdf.addImage(image, 'PNG', 0, 0, 208, 280)
         pdf.save("AnalysisReport.pdf")

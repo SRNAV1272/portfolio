@@ -19,18 +19,6 @@ export default function Work() {
             work: 'Dashboard',
             navigate: '/dashboard/home',
             code: ''
-        },
-        {
-            image: signup,
-            work: 'Sign Up Page',
-            navigate: '/signup',
-            code: ''
-        },
-        {
-            image: signin,
-            work: 'Sign In Page',
-            navigate: '/signin',
-            code: ''
         }
     ]
 

@@ -1,21 +1,19 @@
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
-// import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
-// const uri = "mongodb+srv://sairajeshk17:RFYctzjSYH1TAQJB@cluster0.sbv9mxh.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://sairajeshk17:RFYctzjSYH1TAQJB@cluster0.sbv9mxh.mongodb.net/?retryWrites=true&w=majority";
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//     serverApi: {
-//         version: ServerApiVersion.v1,
-//         strict: true,
-//         deprecationErrors: true,
-//     }
-// });
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
 
-// const database = 'sample_mflix'//'sample_restaurants' //'sample_training'
-// let collection
+const database = 'Users'//'sample_restaurants' //'sample_training'
 
 const app = express()
 
@@ -35,7 +33,8 @@ const global_routes = [
     '/signup',
     '/signin',
     '/experience',
-    '/classes'
+    '/classes',
+    '/login'
 ]
 
 app.get(global_routes, (req, res) => {
@@ -45,6 +44,23 @@ app.get(global_routes, (req, res) => {
 app.listen(port, async () => {
     try {
         console.log(`Server is Listening at Port ${port} !`)
+    } catch (e) {
+        console.error(e)
+    }
+})
+
+app.post('/signin', async (req, res) => {
+    try {
+        await client.connect();
+        console.log(req.body)
+        const data = await client.db(database).collection('UserList').find({ username: req.body.email, password: req.body.password }).toArray()
+        if (data.length === 1)
+            res.send({ login: true, msg: "Login Success !" })
+        else
+            res.send({ login: false, msg: "Please Check username & password !" })
+    } catch (e) {
+        res.send({ login: false, msg: 'Login Failed !' })
     } finally {
+        client.close()
     }
 })

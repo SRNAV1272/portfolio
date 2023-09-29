@@ -62,7 +62,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 // const icons = [<HomeIcon />, <AccountCircleIcon />, <SettingsIcon />, <PaymentIcon />, <Notifications />]
-const links = ['home', 'work', 'experience', 'classes']
+const links = ['home', 'experience', 'classes', 'login']
 
 export default function Home() {
     const open = false;

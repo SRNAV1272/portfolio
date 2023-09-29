@@ -6,7 +6,7 @@ export const GetMoviesData = createAsyncThunk(
     'get/GetMoviesData',
     async () => {
         try {
-            const response = await axios.get(process.env.NODE_ENV === 'development' ? 'http://localhost:5000/movies' : '/movies')
+            const response = await axios.get(process.env.NODE_ENV === 'development' ? 'http://localhost:5000/movies ' : '/movies')
             console.log(response.data)
             return response.data
         } catch (e) {

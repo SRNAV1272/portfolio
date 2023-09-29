@@ -3,21 +3,23 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { PostLogin } from '../../reducers/Slices/SignIn';
+import { Load } from '../../reducers/Slices/Loading';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" target='_blank' href="https://aitsol.tech">
+        aitsol.tech
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -31,13 +33,38 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const navigate = useNavigate()
+  const [error, setError] = React.useState({
+    email: false,
+    password: false
+  })
+  const dispatch = useDispatch()
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const creds = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    }
+    if (creds.email === '')
+      setError((prev) => {
+        return {
+          ...prev,
+          email: true
+        }
+      })
+    if (creds.password === '')
+      setError((prev) => {
+        return {
+          ...prev,
+          password: true
+        }
+      })
+
+    if (creds.email !== '' && creds.password !== '') {
+      dispatch(Load(true))
+      dispatch(PostLogin({ creds, navigate }, { dispatch }))
+    }
   };
 
   return (
@@ -68,7 +95,6 @@ export default function SignIn() {
               alignItems: 'center',
             }}
           >
-            <Button variant='outlined' size='medium' sx={{ alignSelf: 'end', borderRadius: '50px' }} onClick={() => navigate(-1)}>back</Button>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
@@ -80,8 +106,9 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
+                error={error.email}
                 id="email"
-                label="Email Address"
+                label="User Name"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -89,6 +116,7 @@ export default function SignIn() {
               <TextField
                 margin="normal"
                 required
+                error={error.password}
                 fullWidth
                 name="password"
                 label="Password"
@@ -104,18 +132,11 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
+              <Button
+                variant='outlined'
+                fullWidth
+                sx={{ alignSelf: 'end', borderRadius: '50px' }}
+                onClick={() => navigate('/')}>Home</Button>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>

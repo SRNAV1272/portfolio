@@ -4,7 +4,8 @@ import CardMedia from '@mui/material/CardMedia';
 // import git from '../../../images/github.svg'
 // import db from '../../../images/db.svg'
 // import docker from '../../../images/docker.png'
-import full from '../../images/full.jpg'
+import vpc from '../../images/VTC.jpg'
+// import full from '../../images/full.jpg'/
 import js from '../../images/mern.jpg';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import reactdata from '../../images/React.pdf'
@@ -117,7 +118,7 @@ export default function Classes() {
                 <Grid
                     xs={12}
                     p={2}
-                    lg={3}
+                    lg={2}
                     display='flex'
                     justifyContent='center'
                     alignItems='center'
@@ -132,7 +133,7 @@ export default function Classes() {
                         Connect
                     </Button>
                 </Grid>
-                <Grid
+                {/* <Grid
                     xs={12}
                     lg={5}
                     p={2}
@@ -141,6 +142,16 @@ export default function Classes() {
                     alignItems='center'
                 >
                     <img src={full} style={{ width: '100%' }} alt='full stack' />
+                </Grid> */}
+                <Grid
+                    xs={12}
+                    lg={6}
+                    p={2}
+                    display='flex'
+                    justifyContent='space-between'
+                    alignItems='center'
+                >
+                    <img src={vpc} style={{ width: '100%' }} alt='VPC' />
                 </Grid>
             </Grid><br />
             <Footer />
