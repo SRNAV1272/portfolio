@@ -52,7 +52,6 @@ app.listen(port, async () => {
 app.post('/signin', async (req, res) => {
     try {
         await client.connect();
-        console.log(req.body)
         const data = await client.db(database).collection('UserList').find({ username: req.body.email, password: req.body.password }).toArray()
         if (data.length === 1)
             res.send({ login: true, msg: "Login Success !" })
