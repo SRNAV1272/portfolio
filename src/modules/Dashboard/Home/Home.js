@@ -1,82 +1,168 @@
 import * as React from 'react';
-// import Box from '@mui/material/Box';
-// import Stepper from '@mui/material/Stepper';
-// import Step from '@mui/material/Step';
-// import StepLabel from '@mui/material/StepLabel';
-import { Outlet } from 'react-router-dom';
-import { Button, Grid } from '@mui/material';
+import { Box, Button, Grid, Paper, Step, StepContent, StepLabel, Stepper, Typography } from '@mui/material';
 import Chart from "react-apexcharts";
-// eslint-disable-next-line
-import { createFileName, useScreenshot } from 'use-react-screenshot'
-import jsPDF from 'jspdf'
-import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import Calendar from 'react-calendar';
+import LoginIcon from '@mui/icons-material/Login';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import 'react-calendar/dist/Calendar.css';
+import { useSelector } from 'react-redux';
+import BatchPredictionIcon from '@mui/icons-material/BatchPrediction';
 
 export default function DashboardHome() {
-    const ref = React.useRef()
-    const [image, takeScreenshot] = useScreenshot({
-        type: 'image/png',
-        quality: 1.0
-    })
-    function download(image) {
-        const pdf = new jsPDF('p', 'mm', 'a4')
-        pdf.addImage(image, 'PNG', 0, 0, 208, 280)
-        pdf.save("AnalysisReport.pdf")
-    }
-    // function downlaodImage( { name = 'AnalysisReport', ext = 'png' } = {}) {
-    //     const a = document.createElement(('a'))
-    //     a.href = image
-    //     a.download = createFileName(ext, name)
-    //     a.click()
-    // }
+    const [value, onChange] = React.useState(new Date());
+    const { totaldays, attendance, projects, course, batch } = useSelector(state => state.LoginReducers)
+
+    const [activeStep, setActiveStep] = React.useState(0);
+
+    const handleReset = () => {
+        setActiveStep(0);
+    };
 
     return (
         <>
-            <Grid item xs={12} display={'flex'} justifyContent={'end'} py={1}>
-                <Button
-                    variant="outlined"
-                    sx={{
-                        cursor: 'pointer',
-                        fontWeight: 'bold'
-                    }}
-                    onClick={() => takeScreenshot(ref.current).then(download)}
-                    startIcon={<DownloadForOfflineIcon />}
-                >
-                    PDF
-                </Button>&emsp;
-                {/* <Button
-                    variant="outlined"
-                    sx={{
-                        cursor: 'pointer',
-                        fontWeight: 'bold'
-                    }}
-                    onClick={() => takeScreenshot(ref.current).then(downlaodImage)}
-                    startIcon={<DownloadForOfflineIcon />}
-                >
-                    Image
-                </Button> */}
-            </Grid>
-            <Grid container ref={ref}>
+            <Grid
+                container
+                justifyContent={'space-evenly'}
+            >
                 <Grid
                     item
                     xs={12}
-                    lg={6}
+                    lg={3}
+                    display={'flex'}
+                    justifyContent={'space-evenly'}
+                    alignItems={'center'}
+                    p={3}
+                    mt={2}
+                    component={Paper}
                 >
-                    <PChart />
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Typography className='kanit' variant='h6' >Batch</Typography>
+                        <Typography className='kanit' variant='h5' color={'blueviolet'}>{batch}</Typography>
+                    </Box>
+                    <Box>
+                        <BatchPredictionIcon sx={{ fontSize: '40px', color: '#7F6767' }} />
+                    </Box>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    lg={3}
+                    display={'flex'}
+                    justifyContent={'space-evenly'}
+                    alignItems={'center'}
+                    p={3}
+                    mt={2}
+                    component={Paper}
+                >
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Typography className='kanit' variant='h6' >Assignments</Typography>
+                        <Typography className='kanit' variant='h4' color={'blueviolet'} >{projects}</Typography>
+                    </Box>
+                    <Box>
+                        <LoginIcon sx={{ fontSize: '40px', color: '#7F6767' }} />
+                    </Box>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    lg={3}
+                    mt={2}
+                    display={'flex'}
+                    justifyContent={'space-evenly'}
+                    alignItems={'center'}
+                    p={3}
+                    component={Paper}
+                >
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Typography className='kanit' variant='h6' >Attendance</Typography>
+                        <Typography className='kanit' variant='h4' color={'blueviolet'} >{attendance}/{totaldays}</Typography>
+                    </Box>
+                    <Box>
+                        <ContactsIcon sx={{ fontSize: '40px', color: '#7F6767' }} />
+                    </Box>
                 </Grid>
                 <Grid
                     item
                     xs={12}
                     lg={6}
+                    p={2}
+                    display={'flex'}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                 >
-                    <ApexChart />
+                    <Calendar className={'calender'} onChange={onChange} value={value} />
                 </Grid>
-                <Outlet />
+                <Grid
+                    item
+                    xs={12}
+                    lg={6}
+                    display={'flex'}
+                    justifyContent={'space-evenly'}
+                    alignItems={'center'}
+                    p={3}
+                    mt={2}
+                    sx={{
+                        height: '400px',
+                        overflow: 'scroll'
+                    }}
+                    component={Paper}
+                >
+                    <Box sx={{ maxWidth: 400 }}>
+                        <Stepper activeStep={activeStep} orientation="vertical">
+                            {course.map((step, index) => (
+                                <Step key={step.label}>
+                                    <StepLabel
+                                        optional={
+                                            index === 2 ? (
+                                                <Typography variant="caption">Last step</Typography>
+                                            ) : null
+                                        }
+                                    >
+                                        {step.label}
+                                    </StepLabel>
+                                    <StepContent>
+                                        <Typography>{step.description}</Typography>                                        
+                                    </StepContent>
+                                </Step>
+                            ))}
+                        </Stepper>
+                        {activeStep === course.length && (
+                            <Paper square elevation={0} sx={{ p: 3 }}>
+                                <Typography>All steps completed - you&apos;re finished</Typography>
+                                <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+                                    Reset
+                                </Button>
+                            </Paper>
+                        )}
+                    </Box>
+                </Grid>
             </Grid>
         </>
     )
 }
 
-
+// eslint-disable-next-line
 const ApexChart = () => {
     const options = {
         xaxis: {
@@ -106,7 +192,7 @@ const ApexChart = () => {
     return <Chart options={options} series={series} type="area" />;
 };
 
-
+// eslint-disable-next-line
 function PChart() {
 
     const state = {

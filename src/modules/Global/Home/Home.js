@@ -8,11 +8,10 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { BottomNavigation, BottomNavigationAction, Button, Grid, Paper, SwipeableDrawer, Typography } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Button, Grid, Paper, SwipeableDrawer } from '@mui/material';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import ContactEmergencyIcon from '@mui/icons-material/ContactEmergency';
 import HomeIcon from '@mui/icons-material/Home';
@@ -163,17 +162,13 @@ export default function Home() {
                         >
                             <Grid
                                 xs={4}
-                                // border={'1px solid grey'}
                                 display={'flex'}
                                 alignItems={'center'}
                             >
-                                <Typography
+                                <Button
                                     className='kanit'
-                                    fontWeight={'bold'}
-                                    color={'slateblue'}
-                                >
-                                    K Sai Rajesh
-                                </Typography>
+                                    onClick={() => navigate('/')}
+                                >K Sai Rajesh</Button>
                             </Grid>
                             {
                                 window.innerWidth >= 768 &&

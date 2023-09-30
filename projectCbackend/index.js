@@ -52,8 +52,26 @@ app.post('/signin', async (req, res) => {
     try {
         await client.connect();
         const data = await client.db(database).collection('UserList').find({ username: req.body.email, password: req.body.password }).toArray()
-        if (data.length === 1)
-            res.send({ login: true, msg: "Login Success !" })
+        const attendance = await client.db(database).collection('Attendance').find({ username: req.body.email }).toArray()
+        const bill = await client.db(database).collection('Bills').find({ username: req.body.email }).toArray()
+        const Projects = await client.db(database).collection('Projects').find({ username: req.body.email }).toArray()
+
+        if (data.length === 1) {
+            const batch = await client.db(database).collection('Batch').find({ batch: data[0].batch }).toArray()
+            res.send({
+                login: true,
+                msg: "Login Success !",
+                name: data[0].name,
+                username: req.body.email,
+                totaldays: attendance[0].totaldays,
+                attended: attendance[0].attended,
+                bill: bill[0].bill,
+                date: bill[0].date,
+                assignments: Projects[0].projects,
+                course: batch[0].syllubus.reverse(),
+                batch: data[0].batch
+            })
+        }
         else
             res.send({ login: false, msg: "Please Check username & password !" })
     } catch (e) {

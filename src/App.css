@@ -47,3 +47,8 @@
   font-family: 'Pacifico', cursive;
   font-family: 'Sofia Sans Condensed', sans-serif;
 }
+
+.calender {
+  border: none !important;
+  width: "100%" !important;
+}

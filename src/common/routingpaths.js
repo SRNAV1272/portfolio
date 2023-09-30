@@ -1,15 +1,14 @@
 import { Outlet } from "react-router-dom";
-import DashboardLayout from "../modules/Dashboard/DashboardLayout";
 import Settings from "../modules/Dashboard/Settings/Settings";
 import Profile from "../modules/Dashboard/Profile/Profile";
 import SignIn from "../modules/Global/SignIn";
 import Home from "../modules/Global/Home/Home";
 import SubHome from "../modules/Global/Home/SubHome";
-import Work from "../modules/Global/Home/Work";
 import DashboardHome from "../modules/Dashboard/Home/Home";
 import Experience from "../modules/Global/Experience";
 import Classes from "../modules/Global/Classes";
 import Bill from "../modules/Dashboard/Bill/Bill";
+import Auth from "../modules/Layouts/Auth";
 
 export const routingpaths = [
     {
@@ -24,10 +23,6 @@ export const routingpaths = [
                 element: <SubHome />
             },
             {
-                path: 'work',
-                element: <Work />
-            },
-            {
                 path: 'experience',
                 element: <Experience />
             },
@@ -40,9 +35,9 @@ export const routingpaths = [
     {
         path: 'dashboard',
         element:
-            <DashboardLayout>
+            <Auth>
                 <Outlet />
-            </DashboardLayout>,
+            </Auth>,
         children: [
             {
                 path: 'home',

@@ -1,16 +1,21 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Dialog, DialogActions, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useMediaQuery, useTheme } from "@mui/material";
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { useRef, useState } from "react";
 // eslint-disable-next-line
-import { createFileName, useScreenshot } from 'use-react-screenshot'
+import { useScreenshot } from 'use-react-screenshot'
+import DownloadDoneIcon from '@mui/icons-material/DownloadDone';
 import jsPDF from "jspdf";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import { useSelector } from "react-redux";
 
 export default function Bill() {
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+    const { bill, name, date } = useSelector(state => state.LoginReducers)
     const ref = useRef()
+    // eslint-disable-next-line
     const [image, takeScreenshot] = useScreenshot({
         type: 'image/png',
         quality: 1.0
@@ -28,9 +33,6 @@ export default function Bill() {
         setOpen(false);
     };
 
-
-    const TAX_RATE = 0.07;
-
     function ccyFormat(num) {
         return `${num.toFixed(2)}`;
     }
@@ -44,16 +46,9 @@ export default function Bill() {
         return { desc, qty, unit, price };
     }
 
-    function subtotal(items) {
-        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-    }
-
     const rows = [
-        createRow('Paperclips (Box)', 100, 39.99)
+        createRow('MERN Stack', 1, bill)
     ];
-
-    const invoiceSubtotal = subtotal(rows);
-    const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 
 
     return (
@@ -82,6 +77,34 @@ export default function Bill() {
                     <Button variant="outlined" onClick={handleClickOpen} className='kanit' startIcon={<ReceiptIcon />}>
                         Receipt
                     </Button>
+                </Grid>
+                <hr style={{ width: '100%', height: '1px', backgroundColor: '1px solid GrayText' }} /><br /><br />
+                <Grid
+                    xs={12}
+                    border={'1px solid blue'}
+                    borderRadius={'5px'}
+                    p={3}
+                >
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <CurrencyRupeeIcon sx={{ fontSize: "30px" }} />&nbsp;
+                        <Typography variant="h4" fontSize={'30px'} className="kanit" >3999 /-</Typography>
+                    </Box><br />
+                    <Box
+                        sx={{
+                            padding: '10px',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Typography color={"#7F6767"} style={{ fontWeight: 'bolder !important' }} className="kanit">{new Date().getDate()}.{new Date().getMonth()}.{new Date().getFullYear()}</Typography>
+                        <DownloadDoneIcon />
+                    </Box>
                 </Grid>
             </Grid>
             <div>
@@ -130,8 +153,8 @@ export default function Bill() {
                                 justifyContent={'space-between'}
                                 alignItems={'center'}
                             >
-                                <Typography className="kanit" color={'GrayText'}>K Sai Rajesh</Typography>
-                                <Typography className="kanit" color={'GrayText'}>{(new Date()).getDate()}.{(new Date()).getMonth()}.{(new Date()).getFullYear()}</Typography>
+                                <Typography className="kanit" color={'GrayText'}>{name}</Typography>
+                                <Typography className="kanit" color={'GrayText'}>{date}</Typography>
                             </Box>
                         </Grid>
                         <Grid

@@ -11,7 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Badge, BottomNavigation, BottomNavigationAction, Button, Grid, ListItemText, Paper, SwipeableDrawer, Typography } from '@mui/material';
+import { Badge, BottomNavigation, BottomNavigationAction, Button, Grid, ListItemText, Paper, Typography } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -21,6 +21,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Logout, Notifications } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../reducers/Slices/SignIn';
 
 const drawerWidth = 240;
 
@@ -89,7 +91,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-const icons = [<HomeIcon />, <AccountCircleIcon />, <SettingsIcon />, <PaymentIcon />, <Notifications />]
+const icons = [<HomeIcon />, <PaymentIcon />, <AccountCircleIcon />, <SettingsIcon />, <Notifications />]
 
 export default function DashboardLayout() {
 
@@ -97,7 +99,9 @@ export default function DashboardLayout() {
     const [value, setValue] = React.useState('home');
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate()
-    const navList = ['home', 'profile', 'settings', 'bill']
+    const dispatch = useDispatch()
+    const { name } = useSelector(state => state.LoginReducers)
+    const navList = ['home', 'bill']
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -207,6 +211,9 @@ export default function DashboardLayout() {
                                 </IconButton>
                             </Button>
                     }
+                    <div style={{ width: '300px' }}>
+                        <Typography className='kanit'>Hello, {name}</Typography>
+                    </div>
                     <Grid
                         container
                         display={'flex'}
@@ -235,7 +242,7 @@ export default function DashboardLayout() {
                             <Button
                                 variant='outlined'
                                 sx={{ border: '2px solid white', color: 'white', borderRadius: '50px' }}
-                                onClick={() => navigate('/login')}
+                                onClick={() => { dispatch(logout()); navigate('/login') }}
                             >
                                 {window?.innerWidth <= 550 ? <Logout /> : 'logout'}
                             </Button>
