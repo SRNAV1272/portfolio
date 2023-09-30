@@ -11,7 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Badge, BottomNavigation, BottomNavigationAction, Button, Grid, ListItemText, Paper, Typography } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Button, Grid, ListItemText, Paper, Typography } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -219,9 +219,9 @@ export default function DashboardLayout() {
                         display={'flex'}
                         justifyContent={'end'}
                     >
-                        <Grid
-                            xs={2}
-                            sm={2}
+                        {/* <Grid
+                            xs={3}
+                            sm={3}
                             lg={1}
                             display={'flex'}
                             justifyContent={'center'}
@@ -230,10 +230,10 @@ export default function DashboardLayout() {
                             <Badge badgeContent={0} color="primary" sx={{ cursor: 'pointer' }}>
                                 <Notifications className='bell' />
                             </Badge>
-                        </Grid>
+                        </Grid> */}
                         <Grid
-                            xs={2}
-                            sm={2}
+                            xs={4}
+                            sm={4}
                             lg={1}
                             display={'flex'}
                             justifyContent={'center'}
