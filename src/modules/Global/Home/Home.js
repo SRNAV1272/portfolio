@@ -5,13 +5,8 @@ import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import { BottomNavigation, BottomNavigationAction, Button, Grid, Paper, SwipeableDrawer } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Button, Grid, Paper } from '@mui/material';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import ContactEmergencyIcon from '@mui/icons-material/ContactEmergency';
 import HomeIcon from '@mui/icons-material/Home';
@@ -72,59 +67,7 @@ export default function Home() {
     const navigate = useNavigate()
     const [value, setValue] = React.useState('home');
 
-    // smaller screens
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    });
-
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (
-            event &&
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open });
-    };
-
     console.log('Show =>', process.env.NODE_ENV)
-
-    const list = (anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, paddingX: '20px', paddingY: '60px' }}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
-            <List>
-                {links.map((text, index) => (
-                    <NavLink
-                        style={({ isActive }) => {
-                            return {
-                                color: isActive ? 'blue' : 'grey',
-                                textDecorationLine: 'none'
-                            }
-                        }}
-                        to={text === 'home' ? '/' : `/${text}`}
-                    >
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemText>
-                                    <span style={{ fontWeight: 'bold' }}>{capitalizeFirstLetter(text)}</span>
-                                </ListItemText>
-                            </ListItemButton>
-                        </ListItem>
-                    </NavLink>
-                ))}
-            </List>
-            <Divider />
-        </Box>
-    );
 
     function capitalizeFirstLetter(str) {
         return str[0].toUpperCase() + str.slice(1);
@@ -138,7 +81,7 @@ export default function Home() {
                     <Toolbar>
                         {
                             window.innerWidth < 768 &&
-                            <Button onClick={toggleDrawer('bottom', true)}>
+                            <Button>
                                 <IconButton
                                     color="inherit"
                                     aria-label="open drawer"
@@ -205,19 +148,6 @@ export default function Home() {
                         </Grid>
                     </Toolbar>
                 </AppBar>
-
-                <div>
-                    <React.Fragment>
-                        <SwipeableDrawer
-                            anchor={'bottom'}
-                            open={state['bottom']}
-                            onClose={toggleDrawer('bottom', false)}
-                            onOpen={toggleDrawer('bottom', true)}
-                        >
-                            {list('bottom')}
-                        </SwipeableDrawer>
-                    </React.Fragment>
-                </div>
                 <Drawer
                     sx={{
                         width: drawerWidth,
