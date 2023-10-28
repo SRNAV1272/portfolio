@@ -9,6 +9,8 @@ import Experience from "../modules/Global/Experience";
 import Classes from "../modules/Global/Classes";
 import Bill from "../modules/Dashboard/Bill/Bill";
 import Auth from "../modules/Layouts/Auth";
+import SignUp from "../modules/Global/SignUp";
+import OTP from "../modules/Global/OTP";
 
 export const routingpaths = [
     {
@@ -63,5 +65,13 @@ export const routingpaths = [
     {
         path: 'login',
         element: <SignIn />
+    },
+    {
+        path: 'signup',
+        element: <SignUp />
+    },
+    {
+        path: 'otp',
+        element: <OTP />
     }
 ]

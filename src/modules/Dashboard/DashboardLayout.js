@@ -130,45 +130,6 @@ export default function DashboardLayout() {
         setState({ ...state, [anchor]: open });
     };
 
-    // const list = (anchor) => (
-    //     <Box
-    //         sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, paddingX: '20px', paddingY: '60px' }}
-    //         role="presentation"
-    //         onClick={toggleDrawer(anchor, false)}
-    //         onKeyDown={toggleDrawer(anchor, false)}
-    //     >
-    //         <List>
-    //             {['home', 'account', 'settings', 'payment', 'notifications'].map((text, index) => (
-    //                 <NavLink
-    //                     style={({ isActive }) => {
-    //                         return {
-    //                             color: isActive ? 'blue' : 'grey',
-    //                             textDecorationLine: 'none'
-    //                         }
-    //                     }}
-    //                     to={`/dashboard/${text}`}
-    //                 >
-    //                     <ListItem key={text} disablePadding>
-    //                         <ListItemButton>
-    //                             <ListItemIcon
-    //                                 sx={{
-    //                                     color: 'inherit'
-    //                                 }}
-    //                             >
-    //                                 {icons[index]}
-    //                             </ListItemIcon>
-    //                             <ListItemText>
-    //                                 <span style={{ fontWeight: 'bold' }}>{capitalizeFirstLetter(text)}</span>
-    //                             </ListItemText>
-    //                         </ListItemButton>
-    //                     </ListItem>
-    //                 </NavLink>
-    //             ))}
-    //         </List>
-    //         <Divider />
-    //     </Box>
-    // );
-
     function capitalizeFirstLetter(str) {
         return str[0].toUpperCase() + str.slice(1);
     }
@@ -219,18 +180,6 @@ export default function DashboardLayout() {
                         display={'flex'}
                         justifyContent={'end'}
                     >
-                        {/* <Grid
-                            xs={3}
-                            sm={3}
-                            lg={1}
-                            display={'flex'}
-                            justifyContent={'center'}
-                            alignItems={"center"}
-                        >
-                            <Badge badgeContent={0} color="primary" sx={{ cursor: 'pointer' }}>
-                                <Notifications className='bell' />
-                            </Badge>
-                        </Grid> */}
                         <Grid
                             xs={4}
                             sm={4}
@@ -250,19 +199,6 @@ export default function DashboardLayout() {
                     </Grid>
                 </Toolbar>
             </AppBar>
-
-            {/* <div>
-                <React.Fragment>
-                    <SwipeableDrawer
-                        anchor={'left'}
-                        open={state['left']}
-                        onClose={toggleDrawer('left', false)}
-                        onOpen={toggleDrawer('left', true)}
-                    >
-                        {list('left')}
-                    </SwipeableDrawer>
-                </React.Fragment>
-            </div> */}
             <Divider />
 
             <Drawer

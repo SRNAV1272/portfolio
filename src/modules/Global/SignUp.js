@@ -11,13 +11,17 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { PostSignUp } from '../../reducers/Slices/SignIn';
+import { Load } from '../../reducers/Slices/Loading';
+import { Notify } from '../../reducers/Slices/Notification';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://ksairajesh.co.in">
+        ksairajesh.co.in
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -31,22 +35,35 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
 
-
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+  const [error, setError] = React.useState({
+    firstName: false,
+    lastName: false,
+    ph_no: false,
+    password: false
+  })
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    if (!error.firstName &&
+      !error.lastName &&
+      !error.ph_no &&
+      !error.password &&
+      data.get('firstName') !== '' &&
+      data.get('lastName') !== '' &&
+      data.get('ph_no') !== '' &&
+      data.get('password') !== ''
+    ) {
+      dispatch(PostSignUp({ data, navigate }, { dispatch }))
+      dispatch(Load(true))
+      return
+    }
+    dispatch(Notify({ msg: 'Please fill all the fields !', type: 'error' }))
   };
 
-
-
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme} >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -57,7 +74,7 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Button variant='outlined' size='medium' sx={{ alignSelf: 'end', borderRadius: '50px' }} onClick={() => navigate(-1)}>back</Button>
+          {/* <Button variant='outlined' size='medium' sx={{ alignSelf: 'end', borderRadius: '50px' }} onClick={() => navigate(-1)}>back</Button> */}
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -70,7 +87,12 @@ export default function SignUp() {
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
+                  error={error.firstName}
                   required
+                  onChange={(e) => {
+                    if (e.target.value === '') setError(prev => { return { ...prev, firstName: true } })
+                    else setError(prev => { return { ...prev, firstName: false } })
+                  }}
                   fullWidth
                   id="firstName"
                   label="First Name"
@@ -81,7 +103,12 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  error={error.lastName}
                   id="lastName"
+                  onChange={(e) => {
+                    if (e.target.value === '') setError(prev => { return { ...prev, lastName: true } })
+                    else setError(prev => { return { ...prev, lastName: false } })
+                  }}
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
@@ -91,10 +118,30 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="ph_no"
+                  sx={{
+                    "& input[type=number]": {
+                      MozAppearance: "textfield",
+                    },
+                    "& input[type=number]::-webkit-outer-spin-button": {
+                      WebkitAppearance: "none",
+                      margin: 0,
+                    },
+                    "& input[type=number]::-webkit-inner-spin-button": {
+                      WebkitAppearance: "none",
+                      margin: 0,
+                    }
+                  }}
+                  error={error.ph_no}
+                  type='number'
+                  onInput={(e) => {
+                    e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 10)
+                    if (!/^[6-9]\d{9}$/gi.test(e.target.value)) setError(prev => { return { ...prev, ph_no: true } })
+                    else setError(prev => { return { ...prev, ph_no: false } })
+                  }}
+                  label="Mobile Number"
+                  name="ph_no"
+                  autoComplete="Mobile Number"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -102,6 +149,11 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
+                  error={error.password}
+                  onChange={(e) => {
+                    if (e.target.value === '') setError(prev => { return { ...prev, password: true } })
+                    else setError(prev => { return { ...prev, password: false } })
+                  }}
                   label="Password"
                   type="password"
                   id="password"
@@ -118,8 +170,13 @@ export default function SignUp() {
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
+              <Grid item xs>
+                <Link href="/" variant="body2">
+                  Home
+                </Link>
+              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
@@ -128,6 +185,6 @@ export default function SignUp() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
