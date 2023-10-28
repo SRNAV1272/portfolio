@@ -187,7 +187,7 @@ app.post('/getOtp', async (req, res) => {
                 .then(async data => {
                     console.log(data.data)
                     if (data.data.Message === 'Submitted Successfully') {
-
+                        await client.connect()
                         await db.collection('otp').insertOne({
                             OTP: OTP,
                             LogID: data.data.LogID,
