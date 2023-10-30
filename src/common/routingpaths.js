@@ -7,7 +7,6 @@ import SubHome from "../modules/Global/Home/SubHome";
 import DashboardHome from "../modules/Dashboard/Home/Home";
 import Experience from "../modules/Global/Experience";
 import Classes from "../modules/Global/Classes";
-import Bill from "../modules/Dashboard/Bill/Bill";
 import Auth from "../modules/Layouts/Auth";
 import SignUp from "../modules/Global/SignUp";
 import OTP from "../modules/Global/OTP";
@@ -25,7 +24,7 @@ export const routingpaths = [
                 element: <SubHome />
             },
             {
-                path: 'experience',
+                path: 'resume',
                 element: <Experience />
             },
             {
@@ -55,10 +54,6 @@ export const routingpaths = [
             {
                 path: 'profile',
                 element: <Profile />
-            },
-            {
-                path: 'bill',
-                element: <Bill />
             }
         ]
     },

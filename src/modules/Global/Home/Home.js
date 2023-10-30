@@ -60,14 +60,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 const icons = [<HomeIcon />, <ContactEmergencyIcon />, <SchoolIcon />, <LockOpenIcon />]
-const links = [' ', 'experience', 'classes', 'login']
+const links = [' ', 'resume', 'classes', 'login']
 
 export default function Home() {
     const open = false;
     const navigate = useNavigate()
     const [value, setValue] = React.useState('home');
 
-    console.log('Show =>', process.env.NODE_ENV)
+    // console.log('Show =>', process.env.NODE_ENV)
 
     function capitalizeFirstLetter(str) {
         return str[0].toUpperCase() + str.slice(1);
