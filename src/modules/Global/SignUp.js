@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { PostSignUp } from '../../reducers/Slices/SignIn';
 import { Load } from '../../reducers/Slices/Loading';
+import HomeIcon from '@mui/icons-material/Home';
 import { Notify } from '../../reducers/Slices/Notification';
 
 function Copyright(props) {
@@ -169,10 +170,15 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid
+              container
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent="space-between"
+            >
               <Grid item xs>
                 <Link href="/" variant="body2">
-                  Home
+                  <HomeIcon />
                 </Link>
               </Grid>
               <Grid item>

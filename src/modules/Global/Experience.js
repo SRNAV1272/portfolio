@@ -11,6 +11,12 @@ import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
 export default function Experience() {
 
+    // let i = 0
+    // do {
+    //     console.log(i)
+    //     i++
+    // } while (i < 5)
+
     const content = [
         {
             project: 'Pixofix',
