@@ -9,11 +9,9 @@ import docker from '../../../images/docker.png'
 import mui from '../../../images/mui.png'
 import Footer from "../../Global/Footer";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { useNavigate } from "react-router-dom";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function SubHome() {
-    const navigate = useNavigate()
     const skills = [
         {
             icon: git,
@@ -96,7 +94,7 @@ export default function SubHome() {
                             className='kanit'
                             fontWeight={'bold'}
                         >
-                            Am Indian based Software Developer passionate and experienced in building Web applications.
+                            an Indian based Software Developer passionate and experienced in building Web applications.
                         </Typography>
                         <Grid
                             xs={12}
@@ -142,7 +140,7 @@ export default function SubHome() {
                             >
                                 Connect
                             </Button><br />
-                            <Box sx={{ display: 'flex', direction: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                            {/* <Box sx={{ display: 'flex', direction: 'column', justifyContent: 'center', alignItems: 'center' }}>
                                 <Button
                                     variant="outlined"
                                     onClick={() => navigate('/classes')}
@@ -152,16 +150,7 @@ export default function SubHome() {
                                     <Avatar src={nodejs} sizes="large" sx={{ color: 'grey' }} />&ensp;
                                     <Avatar src={git} sizes="large" sx={{ color: 'grey' }} />
                                 </Button>
-                            </Box>
-                            <Box
-                                sx={{
-                                    py: 3
-                                }}
-                            >
-                                <span className="kanit">MERN Stack</span> &emsp;
-                                <span className="kanit" style={{ fontSize: '20px', color: '#880808' }}>at ₹ 3999 /-</span>
-                            </Box>
-
+                            </Box> */}
                         </Grid>
                     </Box>
                 </Grid>

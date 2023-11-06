@@ -6,7 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 // import docker from '../../../images/docker.png'
 import vpc from '../../images/VTC.jpg'
 // import full from '../../images/full.jpg'/
-import js from '../../images/mern.jpg';
+import js from '../../images/nodepng.png';
+import web from '../../images/web.png';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import reactdata from '../../images/React.pdf'
 import nodedata from '../../images/nodejs.pdf'
@@ -21,7 +22,7 @@ export default function Classes() {
             <Grid container justifyContent='space-between' component={Paper}>
                 <Grid
                     xs={12}
-                    lg={4}
+                    lg={7}
                     p={1}
                 >
                     <CardMedia
@@ -30,35 +31,6 @@ export default function Classes() {
                         image={js}
                         alt="Live from space album cover"
                     />
-                </Grid>
-                <Grid
-                    xs={12}
-                    lg={4}
-                    p={5}
-                >
-                    <Typography className="kanit" fontSize='25px'>React</Typography>
-                    <Box>
-                        <ul className='kanit'>
-                            <li>Environment Setup</li>
-                            <li>ES6 Modules</li>
-                            <li>React Hooks</li>
-                            <li>Graphical Representation of data</li>
-                        </ul>
-                        <Button
-                            variant='outlined'
-                            endIcon={<ArrowCircleDownIcon />}
-                            sx={{ borderRadius: '50px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}
-                        >
-                            <a
-                                className='kanit'
-                                style={{
-                                    textDecorationLine: 'none'
-                                }}
-                                href={reactdata}
-                                download="React_Syllbus.pdf"
-                            >Syllbus</a>
-                        </Button>
-                    </Box>
                 </Grid>
                 <Grid
                     xs={12}
@@ -92,6 +64,50 @@ export default function Classes() {
                 <Grid
                     xs={12}
                     lg={4}
+                    p={5}
+                >
+                    <Typography className="kanit" fontSize='25px'>React</Typography>
+                    <Box>
+                        <ul className='kanit'>
+                            <li>Environment Setup</li>
+                            <li>ES6 Modules</li>
+                            <li>React Hooks</li>
+                            <li>Graphical Representation of data</li>
+                        </ul>
+                        <Button
+                            variant='outlined'
+                            endIcon={<ArrowCircleDownIcon />}
+                            sx={{ borderRadius: '50px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}
+                        >
+                            <a
+                                className='kanit'
+                                style={{
+                                    textDecorationLine: 'none'
+                                }}
+                                href={reactdata}
+                                download="React_Syllbus.pdf"
+                            >Syllbus</a>
+                        </Button>
+                    </Box>
+                </Grid>
+                <Grid
+                    xs={12}
+                    lg={7}
+                    p={1}
+                >
+                    <CardMedia
+                        component="img"
+                        sx={{ width: '100%' }}
+                        image={web}
+                        style={{
+                            borderRadius: '20px'
+                        }}
+                        alt="Live from space album cover"
+                    />
+                </Grid>
+                <Grid
+                    xs={12}
+                    lg={4}
                     p={2}
                     display='flex'
                     direction='column'
@@ -111,7 +127,7 @@ export default function Classes() {
                             Online Classes
                         </Typography>
                         {/* <span className="kanit" style={{ fontSize: '13px' }}>Complete MERN Stack Course</span> */}
-                        <span className="kanit" style={{ fontSize: '20px', color: '#880808' }}>at ₹ 3999 /-</span><br />
+                        <span className="kanit" style={{ fontSize: '20px', color: '#880808' }}>at ₹ 5999 /-</span><br />
                         <span className="kanit">Batch of 5 Students only !</span>
                     </Box>
                 </Grid>

@@ -75,7 +75,6 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          {/* <Button variant='outlined' size='medium' sx={{ alignSelf: 'end', borderRadius: '50px' }} onClick={() => navigate(-1)}>back</Button> */}
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>

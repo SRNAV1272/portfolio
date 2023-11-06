@@ -135,7 +135,6 @@ app.post('/login', async (req, res) => {
                 res.send({
                     jwtToken: token,
                     login: true,
-                    ph_no: req.body.ph_no,
                     msg: 'Login Successful !'
                 })
             } catch (e) {
